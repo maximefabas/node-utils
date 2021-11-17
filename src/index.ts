@@ -1,6 +1,5 @@
 import compressImages from './images-compressor'
 import path from 'path'
-import fse from 'fs-extra'
 
 const src = path.join(__dirname, '../images')
 const sizes = new Array(10)
