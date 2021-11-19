@@ -1,19 +1,23 @@
 import path from 'path'
 import fse from 'fs-extra'
 import sharp from 'sharp'
+import extensions from './extensions.json'
 
-const jpgExtensions = ['.jpg', '.jpeg']
-const pngExtensions = ['.png']
-const webpExtensions = ['.wepb']
-const avifExtensions = ['.avif', '.avifs']
-const heifExtensions = ['.heif', '.heifs', '.hif']
+const {
+  jpgExtensions,
+  pngExtensions,
+  webpExtensions,
+  avifExtensions,
+  heifExtensions
+} = extensions
+
 const allowedExtensions = [
   ...jpgExtensions,
   ...pngExtensions,
   ...webpExtensions,
   ...avifExtensions,
   ...heifExtensions
-]
+].flat()
 
 async function compressImages (
   src: string,
@@ -21,10 +25,10 @@ async function compressImages (
   sizes: number[] = [],
   qualities: number[]|number = 100
 ) {
-  
+
   if (!path.isAbsolute(src)) throw new Error('Source path must be absolute.')
   const files = await fse.readdir(src)
-  
+
   for (const file of files) {
     const filePath = path.join(src, file)
     const isDirectory = (await fse.stat(filePath)).isDirectory()

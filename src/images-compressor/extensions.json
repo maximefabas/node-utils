@@ -1,0 +1,7 @@
+{
+  "jpgExtensions": [".jpg", ".jpeg"],
+  "pngExtensions": [".png"],
+  "webpExtensions": [".wepb"],
+  "avifExtensions": [".avif", ".avifs"],
+  "heifExtensions": [".heif", ".heifs", ".hif"]
+}
